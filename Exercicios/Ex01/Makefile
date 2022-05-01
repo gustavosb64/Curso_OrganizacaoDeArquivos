@@ -1,8 +1,8 @@
 all:
-	gcc -g -Wall -Wpedantic -o main main.c
+	gcc -g -Wall -Wpedantic -o main main.c functions.c
 
 c:
-	gcc -g -o main main.c
+	gcc -g -o main main.c functions.c
 
 run:
 	./main
