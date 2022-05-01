@@ -58,6 +58,7 @@ Person create_person_reg(){
     return P;
 }
 
+/* Permite a escrita dos dados no arquivo escolhido */
 void operation_1(char *filename){
 
     FILE *file = fopen(filename, "wb");
@@ -97,6 +98,31 @@ void operation_1(char *filename){
     return;
 }
 
+/* Permite a leitura dos dados do arquivo escolhido */
+void operation_2(char *filename){
+
+    FILE *file = fopen(filename, "rb");
+
+    // Criando Pessoa e lendo os dados do arquivo escolhido
+    Person P; 
+    fread(&P.firstname, sizeof(char), 51, file);
+    fread(&P.lastname, sizeof(char), 51, file);
+    fread(&P.email, sizeof(char), 81, file);
+    fread(&P.nationality, sizeof(char), 51, file);
+    fread(&P.age, sizeof(int), 1, file);
+
+    // Printando os dados lidos
+    printf("Firstname: %s\n", P.firstname);
+    printf("Lastname: %s\n", P.lastname);
+    printf("Email: %s\n", P.email);
+    printf("Nationality: %s\n", P.nationality);
+    printf("Age: %d\n\n", P.age);
+
+    fclose(file);
+
+    return;
+}
+
 int main(int argc, char *argv[]){
 
     int op;
@@ -112,7 +138,6 @@ int main(int argc, char *argv[]){
     printf("%s\n",filename);
     */
 
-
     switch(op){
 
         case 1:
@@ -121,6 +146,7 @@ int main(int argc, char *argv[]){
             break;
 
         case 2:
+            operation_2(filename);
 
             break;
 
