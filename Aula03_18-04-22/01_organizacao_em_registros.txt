@@ -1,0 +1,35 @@
+== ORGANIZAÇÃO EM REGISTROS ==
+
+    -> Métodos de organização
+        -> Tamanho fixo:
+            |-> todos os campos possuem um tamanho fixo
+        -> Tamanho variável:
+            |-> começa cada campo com um indicador de tamanho
+            |-> delimitadores entre campos
+
+    -> Tamanho fixo
+        |-> Todos os registros possuem o mesmo tamanho fixo
+        |-> !! Se todos os campos são de tamanho fixo, então o registro é de tamanho fixo
+            |-> Se os registros são de tamanho fixo, ~NÃO~ necessariamente os campos são de tamanho fixo
+
+        |-> RRN: Relative Record Number
+            |-> O número relativo de cada registro
+            |-> Acesso direto: tamanho_registro * RRN
+
+    -> Tamanho variável
+
+        |-> Indicador de tamanho:
+            |- Tamanho de cada registro em bytes
+            |-> Imediatamente anterior ao registro
+            |-> Devem ser separados por outro método de separação (delimitadores, etc)
+            |-> O indicador de tamanho não inclui o tamanho do próprio indicador (que seria um inteiro)
+                |-> Não é necessário, já que, ao lê-lo, já se sabe seu tamanho
+            |-> Bastante utilizado em registros de tamanho variável
+
+        |-> Delimitadores:
+            |-> Separar todos os registros com delimitadores.
+                |-> Colocado ao final do registro
+                |-> Necessidade de ser usado em conjunto com um método para campos
+
+
+------------------------------

@@ -1,0 +1,16 @@
+== ABORDAGEM DINÂMICA DE REUSO DE ESPAÇO == 
+
+    (FOLK, pg 210)
+    -> Registros de tamanho FIXO
+        |-> Aplicações muito voláteis precisam de reutilizar os espaços liberados o mais rápido possível
+        |-> Precisamos garantir duas coisas:
+            |-> Os arquivos deletados sejam marcados    
+            |-> Podemos achar o espaço deletado para reuso
+
+            |-> A primeira condição é satisfeita pelo marcador utilizado nos métodos estáticos
+            |-> A segunda, pode-se utilizar uma pilha encadeada
+
+        |-> Ao remover um registro, marca-se seu conteúdo e adiciona seu offset em uma pilha encadeada
+        |-> Ao adicionar um elemento, checa-se primeiro a pilha; caso haja algum campo vago (previamente
+            deletado), o offset armazenado aponta diretamente para sua posição; caso contrário, adiciona-
+            se ao final da pilha

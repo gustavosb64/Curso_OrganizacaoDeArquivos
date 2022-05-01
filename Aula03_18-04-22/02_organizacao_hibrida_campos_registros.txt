@@ -1,0 +1,15 @@
+== ORGANIZAÇÃO HÍBRIDA DE CAMPOS E REGISTROS == 
+
+    -> Misturar campos de tamanho fixo e variável é uma prática mais comuns em aplicações reais
+
+    -> Registros de tamanho variável com indicador de tamanho
+    -> Campos de tamanho variável com indicador de tamanho
+
+    VEÍCULO
+        |-> Modelo :        Ferrari     |   Volvo   |   BMW
+        |-> Descrição:      3 portas    |           |
+        |-> Cor:            vermelho    |   preto   |
+
+    Ex1: Faça os 3 registros
+    Ex2: Use metadados para melhorar a legibilidade e manipular valores nulos
+

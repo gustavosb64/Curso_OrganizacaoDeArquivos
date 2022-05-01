@@ -1,0 +1,31 @@
+== ABORDAGEM ESTÁTICA DE REUSO DE ESPAÇO == 
+
+    (FOLK, pg 208)
+    -> Remoção lógica
+        |-> MARCA: atribui uma marca no início do campo para marcá-lo como deletado
+            |-> Método 1: marca o primeiro byte
+            |-> Método 2: marca um campo extra no início
+        |-> Remoção LÓGICA: inicialmente, não remove de fato, o marca 
+        |-> Esta remoção é utilizada porque não dá para se fazer um shift nos dados armazenados
+        |-> Vantagens:
+            |-> é possível recuperar dados deletados
+
+    -> Abordagem estática
+        |-> O arquivo fica marcado por um tempo, sendo tratado como espaço vago
+        |-> Após dado tempo, o arquivo é reconstruído, compactando os dados
+        |-> Compactação
+            |-> Caso haja espaço, uma forma mais eficiente de se fazer isso é através de uma cópia
+            |-> Pode-se compactar o arquivo diretamente, mas é mais complicado e ocupa mais tempo
+            |-> A frequência de compactação varia de aplicação para aplicação.
+                |-> Normalmente baseada em um período te tempo, ou uma quantidade acumulada 
+                    específica de arquivos deletados
+        |-> Algoritmo
+
+            abrir arquivo para leitura
+            posição inicial: tamanho_registro * RRN 
+            ler tamanho_registro
+            mostrar registro
+            fechar arquivo 
+
+---------------------------
+    

@@ -1,0 +1,66 @@
+== PÁGINAS DE DISCO (ou Cluster) ==
+    -> Arquivo: sequência de bytes armazenada em disco
+    -> Unidade de transferência de dados entre a RAM e o disco
+    -> É utilizada para acelerar o processo de leitura e escrita
+    -> ?? Sempre, inicialmente, é lida uma página de disco
+    -> Conjunto de setores logicamente contíguos no disco
+    -> Qualquer SO vai dividir o disco em páginas de disco e escrevê-los dessa forma
+    -> Arquivo (definição): 
+        |-> Um arquivo tem ~uma ou mais~ páginas de disco
+    -> Um arquivo é visto pelo sistema de arquivos como um conjunto de páginas de disco
+    -> Na página de disco, TODOS os bytes são sequenciais 
+    -> As páginas de disco NÃO são fisicamente contínuas
+    -> Embora os arquivos com 1+ páginas de disco possam estar fragmentadas, é possível deixá-las contínuas
+        |-> Desfragmentação do disco
+    -> Costuma-se pedir grandes páginas de disco para garantir que as páginas sejam sequenciais
+        |-> Bancos de dados costumam sobrepor a SO e já pedem mais páginas
+        |-> Isso otimiza a velocidade de leitura e escrita, pois evita o tempo de seek
+            |-> LEMBRETE: o tempo de seek é o tempo mais caro da leitura do disco
+    -> Uma página de disco pode NÃO pode conter mais de um arquivo
+        |-> A página é a unidade
+        |-> Endereçamento: endereça-se um arquivo, não mais
+            |-> é possível endereçar mais de um arquivo, mas não compensa
+
+    -> O sistema operacional possui um ~SISTEMA DE ARQUIVOS~ que faz a separação do disco em páginas de disco 
+        |-> De fábrica, o disco vem em separações de 512 bytes
+        |-> O tamanho da página de disco pode ser alterada (tamanho padrão: 4096 bytes)
+
+    -> Páginas de disco LÓGICAS
+        |-> O sistema de arquivos cria uma outra abstração:
+            |-> Mapeia as páginas de disco como contínuas, apesar de não serem
+
+        
+    -> Sobre leitura
+        fread(1): independente o tamanho do fread, se lê uma página de disco
+            |-> dando o primeiro fread => primeiro acesso a disco
+
+        fread(int)
+
+        n fread() => não equivalem n acessos a disco
+
+        -> Tudo que for leitura sequencial, não se utiliza um fseek
+
+               RAM
+            ---------
+            |       | ---\      
+            |       |      --> int
+            |       |     /
+            |       | ---/
+            ---------
+            |       |
+            |       |
+            |       |
+            |       |
+            ---------
+            |       |
+            |       |
+            |       |
+            |       |
+            ---------
+            |       |
+            |       |
+            |       |
+            |       |
+                
+-----------------------------
+?? Princípio da localidade

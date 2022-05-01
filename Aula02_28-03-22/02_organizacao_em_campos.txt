@@ -1,0 +1,44 @@
+== ORGANIZAÇÃO EM CAMPOS ==
+
+    Campos podem ser de tamanho fixo ou variável
+
+    -> Métodos de organização
+        -> Tamanho fixo:
+            |-> todos os campos possuem um tamanho fixo
+        -> Tamanho variável:
+            |-> começa cada campo com um indicador de tamanho
+            |-> delimitadores entre campos
+
+    -> Tamanho fixo
+        |-> Byte offset: diferença de bytes de acordo com a referência tomada
+        |-> Vantagens:
+            |-> facilidade de pesquisa
+        |-> Desvantagens:
+            |-> desperdício de espaço de armazenamento
+            |-> possibilidade de truncamento de dados (espaço insuficiente)
+
+    -> Tamanho variável
+        |-> Indicador de tamanho
+            |-> Indica o tamanho do dado em um int imediatamente antes ao dado
+            |-> Vantagens:
+                |-> (Possível) Economia de espaço (ainda que gaste um campo para indicar o tamanho)
+            |-> Desvantagens:
+                |-> Dificuldade de pesquisa: é necessário ler cada indicador de tamanho para se saber o offset
+            |-> Obs: o espaço utilizado pelos campos indicadores de tamanho não são considerados como perda de espaço de
+                armazenamento, pois são inerentes à organização. É considerado perda quando se desperdiça espaço nos 
+                próprios dados.
+
+        |-> Delimitador entre campos
+            |-> Coloca-se um caracetere (1 byte) especial fora do domínio dos dados entre cada dado
+            |-> Vantagens:
+                |-> (Maior) Economia de espaço 
+            |-> Desvantagens:
+                |-> Dificuldade de pesquisa: é necessário ler cada byte para checar se é o delimitador 
+                    |-> Pior cenário de pesquisa possível
+                |-> O delimitador não pode estar no domínio dos dados
+            |-> Pela dificuldade de pesquisa, opta-se por esse método somente em último caso
+
+------------------------------
+Struct => registro
+Tamanhos fixos facilitam endereçamento
+Melhor forma de organização é ser híbrida entre tamanho fixo e variável
