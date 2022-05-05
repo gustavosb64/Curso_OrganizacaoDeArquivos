@@ -26,6 +26,7 @@
             ler tamanho_registro
             mostrar registro
             fechar arquivo 
+    -> Pode ser aplicada tanto a registros de tamanho fixo quanto registros de tamanho variável
 
 ---------------------------
     

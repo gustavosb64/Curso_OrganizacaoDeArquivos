@@ -1,0 +1,10 @@
+EXERCICIOS
+
+1) Insira 
+    Cristina Dutra Aguiar, rua Avenida Trabalhador São Carlense, cidade São Carlos
+
+2) Insira a Ada, rua 1, Jaú
+
+3) Responda: Qual o topo da pilha?
+
+[BASEADO NOS SLIDES REUSO DINAMICO FIXO]
